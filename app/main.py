@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.routers import base
+from app.config import settings
 
 app = FastAPI(
     title="Intern FastAPI Backend",
@@ -16,3 +17,10 @@ def root():
     Root endpoint kiểm tra server hoạt động
     """
     return {"message": "API is running"}
+
+@app.get("/config-test")
+def config_test():
+    return {
+        "app_name": settings.APP_NAME,
+        "debug": settings.DEBUG
+    }
