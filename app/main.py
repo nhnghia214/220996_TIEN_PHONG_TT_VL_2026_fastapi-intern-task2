@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import base, auth
+from app.routers import base, auth, file_upload
 from app.config import settings
 
 app = FastAPI(
@@ -10,6 +10,7 @@ app = FastAPI(
 
 app.include_router(base.router)
 app.include_router(auth.router)
+app.include_router(file_upload.router)
 
 
 @app.get("/")
