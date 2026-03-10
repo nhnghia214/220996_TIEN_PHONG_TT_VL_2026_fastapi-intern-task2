@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import base, auth, file_upload
+from app.routers import base, auth, file_upload, chatbot
 from app.config import settings
 
 app = FastAPI(
@@ -11,6 +11,7 @@ app = FastAPI(
 app.include_router(base.router)
 app.include_router(auth.router)
 app.include_router(file_upload.router)
+app.include_router(chatbot.router)
 
 
 @app.get("/")
