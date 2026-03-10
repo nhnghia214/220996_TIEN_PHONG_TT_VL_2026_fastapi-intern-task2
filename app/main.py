@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import base
+from app.routers import base, auth
 from app.config import settings
 
 app = FastAPI(
@@ -9,14 +9,13 @@ app = FastAPI(
 )
 
 app.include_router(base.router)
+app.include_router(auth.router)
 
 
 @app.get("/")
 def root():
-    """
-    Root endpoint kiểm tra server hoạt động
-    """
     return {"message": "API is running"}
+
 
 @app.get("/config-test")
 def config_test():
